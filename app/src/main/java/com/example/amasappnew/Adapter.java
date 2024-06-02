@@ -1,6 +1,7 @@
 package com.example.amasappnew;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private LayoutInflater layoutInflater;
     private List<Receta> data;
+    private Context context;
     public Adapter(Context context, List<Receta> data) {
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
+        this.context = context;
     }
     @NonNull
     @Override
@@ -32,6 +35,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.textTitle.setText(receta.getNombre());
         holder.textDuration.setText(receta.getDuracion());
         holder.imageView.setImageResource(receta.getImagen());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, RecetaActivity.class);
+            intent.putExtra("metodo", receta.getMetodo());
+            context.startActivity(intent);
+        });
     }
 
     @Override
