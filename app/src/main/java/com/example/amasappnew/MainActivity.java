@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         recetas = new ArrayList<>();
         recetas.add(new Receta("Arepas", "Método arepas", R.drawable.image1, "30 minutos", "Ingredientes 1"));
-        recetas.add(new Receta("Galletas con chocolate", "Método galletas", R.drawable.image2, "45 minutos", "Ingredientes 2"));
-        recetas.add(new Receta("Brownies de chocolate", "Método brownies", R.drawable.image3, "60 minutos", "Ingredientes 3"));
-        recetas.add(new Receta("Pan", "Método pan", R.drawable.image3, "60 minutos", "Ingredientes 3"));
+        recetas.add(new Receta("Galletas con chocolate", "Método galletas", R.drawable.image1, "45 minutos", "Ingredientes 2"));
+        recetas.add(new Receta("Brownies de chocolate", "Método brownies", R.drawable.image1, "60 minutos", "Ingredientes 3"));
+        recetas.add(new Receta("Pan", "Método pan", R.drawable.image1, "60 minutos", "Ingredientes 3"));
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
