@@ -22,6 +22,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         this.data = data;
         this.context = context;
     }
+
+    public void setFilteredList(List<Receta> filteredList){
+        this.data = filteredList;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
