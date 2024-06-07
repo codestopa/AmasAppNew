@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -45,6 +46,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             Intent intent = new Intent(context, RecetaActivity.class);
             intent.putExtra("metodo", receta.getMetodo());
             intent.putExtra("nombre", receta.getNombre());
+            intent.putExtra("imagen", receta.getImagen());
+            intent.putExtra("ingredientes", new ArrayList<>(receta.getIngredientes()));
             context.startActivity(intent);
         });
     }
@@ -67,6 +70,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             textTitle = itemView.findViewById(R.id.textTitle);
             textDuration = itemView.findViewById(R.id.textDuration);
             imageView = itemView.findViewById(R.id.imageView2);
+
         }
     }
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recetas = new ArrayList<>();
-        recetas.add(new Receta("Arepas", "Método arepas", R.drawable.arepas, "30 minutos", "Ingredientes 1"));
-        recetas.add(new Receta("Galletas con chocolate", "Método galletas", R.drawable.galletas, "45 minutos", "Ingredientes 2"));
-        recetas.add(new Receta("Brownies de chocolate", "Método brownies", R.drawable.brownies, "60 minutos", "Ingredientes 3"));
-        recetas.add(new Receta("Masa de pizza napolitana", "Método masa de pizza", R.drawable.masapizza, "10 minutos", "Ingredientes 3"));
-        recetas.add(new Receta("Pan", "Método pan", R.drawable.chapata, "60 minutos", "Ingredientes 3"));
+        recetas.add(new Receta("Arepas", "Método arepas", R.drawable.arepas, "30 minutos", Arrays.asList("Pan","Huevos","Sexo")));
+        recetas.add(new Receta("Galletas con chocolate", "Método galletas", R.drawable.galletas, "45 minutos", Arrays.asList("Pan","Huevos","Sexo")));
+        recetas.add(new Receta("Brownies de chocolate", "Método brownies", R.drawable.brownies, "60 minutos", Arrays.asList("Pan","Huevos","Sexo")));
+        recetas.add(new Receta("Masa de pizza napolitana", "Método masa de pizza", R.drawable.masapizza, "10 minutos", Arrays.asList("Pan","Huevos","Sexo")));
+        recetas.add(new Receta("Pan", "Método pan", R.drawable.chapata, "60 minutos", Arrays.asList("Pan","Huevos","Sexo")));
 
         searchview = findViewById(R.id.searchview);
         searchview.clearFocus();

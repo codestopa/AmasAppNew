@@ -1,14 +1,16 @@
 package com.example.amasappnew;
 
+import java.util.List;
+
 public class Receta {
 
     private String nombre;
     private String metodo;
     private int imagen;
     private String duracion;
-    private String ingredientes;
+    private List<String> ingredientes;
 
-    public Receta(String nombre, String metodo, int imagen, String duracion, String ingredientes){
+    public Receta(String nombre, String metodo, int imagen, String duracion, List<String> ingredientes){
         this.nombre = nombre;
         this.metodo = metodo;
         this.imagen = imagen;
@@ -32,7 +34,7 @@ public class Receta {
         return duracion;
     }
 
-    public String getIngredientes() {
+    public List<String> getIngredientes() {
         return ingredientes;
     }
 }

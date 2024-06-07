@@ -4,39 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="0dp">
 
-    <TextView
-        android:id="@+id/textViewMetodo"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:background="#EFA361"
+        android:textAlignment="center"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textAlignment="center"
+            android:textColor="#6A3011"
+            android:textSize="34sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            tools:layout_editor_absoluteX="176dp"
+            tools:text="TituloReceta" />
+
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/ingredientsContainer"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="8dp"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIngredients"
+        app:layout_constraintVertical_bias="0" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/textViewMetodo"
         android:layout_width="370dp"
-        android:layout_height="150dp"
-        android:scaleType="centerInside"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMethod" />
+
+    <ImageView
+        android:id="@+id/imageViewReceta"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/textViewTitulo"
-        android:layout_width="0dp"
+        android:id="@+id/textViewIngredients"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:text="Ingredientes"
+        android:textAllCaps="false"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewReceta" />
+
+    <TextView
+        android:id="@+id/textViewMethod"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:text="Método"
+        android:textAllCaps="false"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientsContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
