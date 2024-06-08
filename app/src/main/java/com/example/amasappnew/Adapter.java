@@ -40,6 +40,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         Receta receta = data.get(position);
         holder.textTitle.setText(receta.getNombre());
         holder.textDuration.setText(receta.getDuracion());
+        holder.textDificultad.setText(receta.getDificultad());
         holder.imageView.setImageResource(receta.getImagen());
 
         holder.itemView.setOnClickListener(v -> {
@@ -63,12 +64,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textTitle,textDuration;
+        TextView textTitle,textDuration,textDificultad;
         ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textDuration = itemView.findViewById(R.id.textDuration);
+            textDificultad = itemView.findViewById(R.id.textDificultad);
             imageView = itemView.findViewById(R.id.imageView2);
 
         }

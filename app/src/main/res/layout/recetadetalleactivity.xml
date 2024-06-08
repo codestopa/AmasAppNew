@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -32,29 +34,6 @@
             tools:text="TituloReceta" />
 
     </androidx.appcompat.widget.Toolbar>
-    <LinearLayout
-        android:id="@+id/ingredientsContainer"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIngredients"
-        app:layout_constraintVertical_bias="0" />
-
-    <TextView
-        android:id="@+id/textViewMetodo"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMethod" />
-
     <ImageView
         android:id="@+id/imageViewReceta"
         android:layout_width="match_parent"
@@ -65,28 +44,70 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/ic_launcher_background" />
 
-    <TextView
-        android:id="@+id/textViewIngredients"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:text="Ingredientes"
-        android:textAllCaps="false"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewReceta"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewReceta" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:padding="10dp"
+            android:id="@+id/mainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewMethod"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:text="Método"
-        android:textAllCaps="false"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsContainer" />
+            <TextView
+                android:id="@+id/textViewIngredients"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:text="Ingredientes"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewReceta" />
+
+            <LinearLayout
+                android:id="@+id/ingredientsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIngredients"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/textViewMethod"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:text="Método"
+                android:textAllCaps="false"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsContainer" />
+
+            <TextView
+                android:id="@+id/textViewMetodo"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMethod" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

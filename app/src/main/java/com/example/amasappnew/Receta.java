@@ -9,13 +9,15 @@ public class Receta {
     private int imagen;
     private String duracion;
     private List<String> ingredientes;
+    private String dificultad;
 
-    public Receta(String nombre, String metodo, int imagen, String duracion, List<String> ingredientes){
+    public Receta(String nombre, String metodo, int imagen, String duracion, List<String> ingredientes, String dificultad){
         this.nombre = nombre;
         this.metodo = metodo;
         this.imagen = imagen;
         this.duracion = duracion;
         this.ingredientes = ingredientes;
+        this.dificultad = dificultad;
     }
 
     public String getNombre() {
@@ -36,5 +38,8 @@ public class Receta {
 
     public List<String> getIngredientes() {
         return ingredientes;
+    }
+    public String getDificultad(){
+        return dificultad;
     }
 }
