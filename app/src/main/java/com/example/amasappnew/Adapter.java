@@ -49,6 +49,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             intent.putExtra("nombre", receta.getNombre());
             intent.putExtra("imagen", receta.getImagen());
             intent.putExtra("ingredientes", new ArrayList<>(receta.getIngredientes()));
+            intent.putExtra("valorNutricional", receta.getValorNutricional());
             context.startActivity(intent);
         });
     }

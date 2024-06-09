@@ -40,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recetas = new ArrayList<>();
-        recetas.add(new Receta("Arepas", leerArchivo("arepas.txt"), R.drawable.arepas, "20 minutos", Arrays.asList("Harina de Maíz: 400g","Agua: 375mL","Leche: 250mL","Sal: 1 cucharada","Matequilla: 1 cucharada"),"fácil"));
-        recetas.add(new Receta("Galletas con chocolate", leerArchivo("galletas.txt"), R.drawable.galletas, "25 minutos", Arrays.asList("Mantequilla: 180g","Huevos: 2","Levadura: 7g","Azúcar: 225g","Harina: 220g","Esencia de vainilla: 1 cucharada","Trozos de chocolate: 200g"),"fácil"));
-        recetas.add(new Receta("Brownies de chocolate", leerArchivo("brownies.txt"), R.drawable.brownies, "50 minutos", Arrays.asList("Chocolate negro: 200g","Mantequilla: 110g","Huevos: 4","Azúcar: 120g","Esencia de vainilla: 1 cucharada","Bicarbonato","Nueces","Pepitas de chocolate"),"fácil"));
-        recetas.add(new Receta("Masa de pizza napolitana", leerArchivo("masapizza.txt"), R.drawable.masapizza, "10 minutos", Arrays.asList("Harina: 273g","Agua: 187mL","Levadura fresca: 0,5g","Sal: 8,2g"),"medio"));
-        recetas.add(new Receta("Pan de chapata", leerArchivo("chapata.txt"), R.drawable.chapata, "3h 20 min", Arrays.asList("Harina: 450g", "Agua: 450g", "Levadura fresca: 7g","Harina común: 300g","Agua: 120g","Sal: 14g"),"difícil"));
+        recetas.add(new Receta("Arepas", leerArchivo("arepas.txt"), R.drawable.arepas, "20 minutos", Arrays.asList("Harina de Maíz: 400g","Agua: 375mL","Leche: 250mL","Sal: 1 cucharada","Matequilla: 1 cucharada"),"fácil","valorarepas.txt"));
+        recetas.add(new Receta("Galletas con chocolate", leerArchivo("galletas.txt"), R.drawable.galletas, "25 minutos", Arrays.asList("Mantequilla: 180g","Huevos: 2","Levadura: 7g","Azúcar: 225g","Harina: 220g","Esencia de vainilla: 1 cucharada","Trozos de chocolate: 200g"),"fácil","valorgalletas.txt"));
+        recetas.add(new Receta("Brownies de chocolate", leerArchivo("brownies.txt"), R.drawable.brownies, "50 minutos", Arrays.asList("Chocolate negro: 200g","Mantequilla: 110g","Huevos: 4","Azúcar: 120g","Esencia de vainilla: 1 cucharada","Bicarbonato","Nueces","Pepitas de chocolate"),"fácil","valorbrownies.txt"));
+        recetas.add(new Receta("Masa de pizza napolitana", leerArchivo("masapizza.txt"), R.drawable.masapizza, "10 minutos", Arrays.asList("Harina: 273g","Agua: 187mL","Levadura fresca: 0,5g","Sal: 8,2g"),"medio","valorpizza.txt"));
+        recetas.add(new Receta("Pan de chapata", leerArchivo("chapata.txt"), R.drawable.chapata, "3h 20 min", Arrays.asList("Harina: 450g", "Agua: 450g", "Levadura fresca: 7g","Harina común: 300g","Agua: 120g","Sal: 14g"),"difícil","valorchapata.txt"));
+        recetas.add(new Receta("Bizcocho de yogurt", leerArchivo("bizcocho.txt"), R.drawable.bizcocho, "45 min", Arrays.asList("aceite de oliva: 125g","yogur: 1","Azúcar: 250g","Harina de trigo: 375g","Huevos: 3","Levadura química: 16g","sal: 1 pizca"),"fácil","valorbizcocho.txt"));
+        recetas.add(new Receta("Empanada argentina", leerArchivo("empanada.txt"), R.drawable.empanada, "30 min", Arrays.asList("Harina de fuerza: 500g","sal: 2 pellizcos","mantequilla: 100g","Huevo: 1","Aceite de oliva: 2 cucharadas","Agua tibia: 150mL"),"fácil","valorempanadas.txt"));
+        recetas.add(new Receta("Masa de tacos", leerArchivo("tacos.txt"), R.drawable.tacos, "30 min", Arrays.asList("Harina 00: 350g","Agua tibia: 200mL","Sal"),"fácil","valorempanadas.txt"));
+        recetas.add(new Receta("Masa de wonton", leerArchivo("wonton.txt"), R.drawable.wonton, "20 min", Arrays.asList("Harina de trigo: 150g","Agua: 35mL","Huevo: 1","Sal: 1/2 cucharada","Maizena"),"fácil","valorwonton.txt"));
+
 
         searchview = findViewById(R.id.searchview);
         searchview.clearFocus();

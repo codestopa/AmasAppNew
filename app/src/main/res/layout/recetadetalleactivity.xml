@@ -45,19 +45,21 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewReceta"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fillViewport="true">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewReceta">
+
         <LinearLayout
-            android:padding="10dp"
             android:id="@+id/mainContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textViewIngredients"
@@ -106,6 +108,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewMethod" />
+
+            <TextView
+                android:id="@+id/textViewValorNutricional"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:text="Valor Nutricional"
+                android:textAllCaps="false"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMetodo" />
+
+            <TextView
+                android:id="@+id/valorNutricional"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="yes"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMetodo" />
+
+            <Button
+                android:id="@+id/shareButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Compartir PDF" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
