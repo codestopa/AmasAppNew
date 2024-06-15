@@ -3,6 +3,7 @@ package com.example.amasappnew;
 import android.content.ClipData;
 import android.media.RouteListingPreference;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -24,17 +25,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private SearchView searchview;
     private List<Receta> recetas;
+
+    private static final String BASE_URL = "http://localhost:3000/api/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        recetas = new ArrayList<>();
+
+        setupUI();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RecetaAPI recetaAPI = retrofit.create(RecetaAPI.class);
+
+        fetchRecetas(recetaAPI);
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -78,22 +97,59 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         ImageButton btnFavoritos = findViewById(R.id.btnFavorite);
-        btnFavoritos.setOnClickListener(v -> mostrarRecetasFavoritas());
+
     }
 
-    private void mostrarRecetasFavoritas() {
-        List<Receta> favoritas = new ArrayList<>();
-        for (Receta receta : recetas) {
-            if (receta.isFavorito()) {
-                favoritas.add(receta);
-            }
-        }
+    private void setupUI() {
+        recetas = new ArrayList<>();
 
-        if (favoritas.isEmpty()) {
-            Toast.makeText(this, "No tienes recetas marcadas como favoritas.", Toast.LENGTH_SHORT).show();
-        } else {
-            adapter.setFilteredList(favoritas);
-        }
+        searchview = findViewById(R.id.searchview);
+        searchview.clearFocus();
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new Adapter(this, recetas);
+        recyclerView.setAdapter(adapter);
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+
+    private void fetchRecetas(RecetaAPI recetaAPI) {
+        Call<List<Receta>> call = recetaAPI.getRecetas();
+        call.enqueue(new Callback<List<Receta>>() {
+            @Override
+            public void onResponse(Call<List<Receta>> call, Response<List<Receta>> response) {
+                if (response.isSuccessful()) {
+                    recetas.clear();
+                    recetas.addAll(response.body());
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Log.e("API_ERROR", "Error en la respuesta: " + response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Receta>> call, Throwable t) {
+                Log.e("API_ERROR", "Fallo en la llamada: " + t.getMessage());
+            }
+        });
     }
 
     private void filterList(String text) {

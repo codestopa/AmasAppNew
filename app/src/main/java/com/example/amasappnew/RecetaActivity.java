@@ -99,15 +99,6 @@ public class RecetaActivity extends AppCompatActivity {
 
     }
 
-    private void actualizarSharedPreferences(Receta receta) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (receta.isFavorito()) {
-            editor.putBoolean(String.valueOf(receta.hashCode()), true);
-        } else {
-            editor.remove(String.valueOf(receta.hashCode()));
-        }
-        editor.apply();
-    }
 
 
 
