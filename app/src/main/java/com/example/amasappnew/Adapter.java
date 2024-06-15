@@ -43,6 +43,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.textDificultad.setText(receta.getDificultad());
         holder.imageView.setImageResource(receta.getImagen());
 
+
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, RecetaActivity.class);
             intent.putExtra("metodo", receta.getMetodo());

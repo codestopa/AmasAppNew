@@ -1,10 +1,12 @@
 package com.example.amasappnew;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -29,11 +31,27 @@ public class RecetaActivity extends AppCompatActivity {
     private LinearLayout ingredientsContainer;
     private TextView textViewValorNutricional;
     private NestedScrollView nestedScrollView;
+    private ImageButton btnFavorite;
+    private boolean isFavorite = false;
+    private SharedPreferences sharedPreferences;
+    private ArrayList<String> favoritosList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recetadetalleactivity);
+
+
+
+        sharedPreferences = getSharedPreferences("favoritos", MODE_PRIVATE);
+        favoritosList = new ArrayList<>(sharedPreferences.getAll().keySet());
+
+        btnFavorite = findViewById(R.id.btnFavorite);
+
+
+        updateFavoriteIcon();
+
+
 
         textViewMetodo = findViewById(R.id.textViewMetodo);
         textViewTitulo = findViewById(R.id.textViewTitulo);
@@ -79,6 +97,26 @@ public class RecetaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void actualizarSharedPreferences(Receta receta) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (receta.isFavorito()) {
+            editor.putBoolean(String.valueOf(receta.hashCode()), true);
+        } else {
+            editor.remove(String.valueOf(receta.hashCode()));
+        }
+        editor.apply();
+    }
+
+
+
+    private void updateFavoriteIcon() {
+        if (isFavorite) {
+            btnFavorite.setImageResource(R.drawable.ic_favorites_yes);
+        } else {
+            btnFavorite.setImageResource(R.drawable.ic_favorites);
+        }
     }
 
     private void sharePdf(File pdfFile) {

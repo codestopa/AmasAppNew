@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/textViewTitulo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:textAlignment="center"
@@ -32,6 +32,18 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar"
             tools:layout_editor_absoluteX="176dp"
             tools:text="TituloReceta" />
+
+        <ImageButton
+            android:id="@+id/btnFavorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Favorito"
+            android:src="@drawable/ic_favorites"
+            app:layout_constraintBottom_toBottomOf="@id/textViewTitulo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textViewTitulo" />
 
     </androidx.appcompat.widget.Toolbar>
     <ImageView

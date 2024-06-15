@@ -11,6 +11,7 @@ public class Receta {
     private List<String> ingredientes;
     private String dificultad;
     private String valorNutricional;
+    private boolean favorito;
 
     public Receta(String nombre, String metodo, int imagen, String duracion, List<String> ingredientes, String dificultad, String valorNutricional){
         this.nombre = nombre;
@@ -20,6 +21,7 @@ public class Receta {
         this.ingredientes = ingredientes;
         this.dificultad = dificultad;
         this.valorNutricional = valorNutricional;
+        this.favorito = false;
     }
 
     public String getNombre() {
@@ -45,4 +47,12 @@ public class Receta {
         return dificultad;
     }
     public String getValorNutricional(){return valorNutricional;}
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
 }
