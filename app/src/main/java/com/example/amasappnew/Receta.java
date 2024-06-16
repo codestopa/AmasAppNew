@@ -1,18 +1,36 @@
 package com.example.amasappnew;
+/*he cambiado imagen e ingredientes a String, en el adapter hay 2 lineas comentadas*/
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class Receta {
 
+    @SerializedName("id")
+    private int id;
+
+    @SerializedName("nombre")
     private String nombre;
+
+    @SerializedName("metodo")
     private String metodo;
-    private int imagen;
+
+    @SerializedName("imagen")
+    private String imagen;
+
+    @SerializedName("duracion")
     private String duracion;
-    private List<String> ingredientes;
+
+    @SerializedName("ingredientes")
+    private String ingredientes;
+
+    @SerializedName("dificultad")
     private String dificultad;
+
+    @SerializedName("valorNutricional")
     private String valorNutricional;
 
-    public Receta(String nombre, String metodo, int imagen, String duracion, List<String> ingredientes, String dificultad, String valorNutricional){
+    public Receta(String nombre, String metodo, String imagen, String duracion, String ingredientes, String dificultad, String valorNutricional){
         this.nombre = nombre;
         this.metodo = metodo;
         this.imagen = imagen;
@@ -30,7 +48,7 @@ public class Receta {
         return metodo;
     }
 
-    public int getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
@@ -38,7 +56,7 @@ public class Receta {
         return duracion;
     }
 
-    public List<String> getIngredientes() {
+    public String getIngredientes() {
         return ingredientes;
     }
     public String getDificultad(){

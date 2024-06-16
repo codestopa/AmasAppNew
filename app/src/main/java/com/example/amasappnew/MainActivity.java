@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private SearchView searchview;
     private List<Receta> recetas;
 
-    private static final String BASE_URL = "http://localhost:3000/api/";
+    private static final String BASE_URL = "http://192.168.1.96:3000/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        /*
         recetas = new ArrayList<>();
         recetas.add(new Receta("Arepas", leerArchivo("arepas.txt"), R.drawable.arepas, "20 minutos", Arrays.asList("Harina de Maíz: 400g","Agua: 375mL","Leche: 250mL","Sal: 1 cucharada","Matequilla: 1 cucharada"),"fácil","valorarepas.txt"));
         recetas.add(new Receta("Galletas con chocolate", leerArchivo("galletas.txt"), R.drawable.galletas, "25 minutos", Arrays.asList("Mantequilla: 180g","Huevos: 2","Levadura: 7g","Azúcar: 225g","Harina: 220g","Esencia de vainilla: 1 cucharada","Trozos de chocolate: 200g"),"fácil","valorgalletas.txt"));
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         recetas.add(new Receta("Masa de tacos", leerArchivo("tacos.txt"), R.drawable.tacos, "30 min", Arrays.asList("Harina 00: 350g","Agua tibia: 200mL","Sal"),"fácil","valorempanadas.txt"));
         recetas.add(new Receta("Masa de wonton", leerArchivo("wonton.txt"), R.drawable.wonton, "20 min", Arrays.asList("Harina de trigo: 150g","Agua: 35mL","Huevo: 1","Sal: 1/2 cucharada","Maizena"),"fácil","valorwonton.txt"));
         recetas.add(new Receta("Pastel de arándanos", leerArchivo("arandanos.txt"), R.drawable.arandanos, "20 min", Arrays.asList("Harina de trigo: 250g","Sal: 5g","Mantequilla: 125g","Huevos: 5","Agua fría: 2 cucharadas","Arándanos: 500g","Azúcar: 60g","Nata: 150g","Maicena: 1 cucharada","Vainilla: 1 vaina"),"medio","valorarandanos.txt"));
-
+        */
 
         searchview = findViewById(R.id.searchview);
         searchview.clearFocus();
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupUI() {
         recetas = new ArrayList<>();
 
+
         searchview = findViewById(R.id.searchview);
         searchview.clearFocus();
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -131,15 +132,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void fetchRecetas(RecetaAPI recetaAPI) {
         Call<List<Receta>> call = recetaAPI.getRecetas();
         call.enqueue(new Callback<List<Receta>>() {
             @Override
             public void onResponse(Call<List<Receta>> call, Response<List<Receta>> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body() != null) {
                     recetas.clear();
                     recetas.addAll(response.body());
                     adapter.notifyDataSetChanged();
+                    Log.d("API_SUCCESS", "Recetas cargadas correctamente: " + recetas.size());
                 } else {
                     Log.e("API_ERROR", "Error en la respuesta: " + response.errorBody());
                 }
@@ -151,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void filterList(String text) {
         List<Receta> filteredList = new ArrayList<>();
