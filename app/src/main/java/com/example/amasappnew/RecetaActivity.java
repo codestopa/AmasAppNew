@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.core.widget.NestedScrollView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +30,7 @@ public class RecetaActivity extends AppCompatActivity {
     private TextView textViewMetodo;
     private TextView textViewTitulo;
     private ImageView imageViewReceta;
-    private LinearLayout ingredientsContainer;
+    private TextView ingredientsContainer;
     private TextView textViewValorNutricional;
     private NestedScrollView nestedScrollView;
     private ImageButton btnFavorite;
@@ -66,24 +68,15 @@ public class RecetaActivity extends AppCompatActivity {
         if (intent != null) {
             String metodo = intent.getStringExtra("metodo");
             String titulo = intent.getStringExtra("nombre");
-            int imageResId = intent.getIntExtra("imagen", R.drawable.ic_launcher_background);
-            ArrayList<String> ingredientes = intent.getStringArrayListExtra("ingredientes");
+            String imageUrl = intent.getStringExtra("imagen");
+            String ingredientes = intent.getStringExtra("ingredientes");
             String valorNutricional = intent.getStringExtra("valorNutricional");
 
             textViewMetodo.setText(metodo);
             textViewTitulo.setText(titulo);
-            imageViewReceta.setImageResource(imageResId);
-            String valorNutricionalContenido = leerValorNutricional(valorNutricional);
-            textViewValorNutricional.setText(valorNutricionalContenido);
-
-            if (ingredientes != null) {
-                for (String ingrediente : ingredientes) {
-                    TextView textView = new TextView(this);
-                    textView.setText(ingrediente);
-                    textView.setTextSize(18);
-                    ingredientsContainer.addView(textView);
-                }
-            }
+            Picasso.get().load(imageUrl).into(imageViewReceta);
+            textViewValorNutricional.setText(valorNutricional);
+            ingredientsContainer.setText(ingredientes);
 
         }
 

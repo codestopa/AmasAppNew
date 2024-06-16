@@ -86,18 +86,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewReceta" />
 
-            <LinearLayout
+            <TextView
                 android:id="@+id/ingredientsContainer"
-                android:layout_width="match_parent"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:padding="8dp"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewIngredients"
-                app:layout_constraintVertical_bias="0" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewIngredientes" />
 
             <TextView
                 android:id="@+id/textViewMethod"
@@ -138,7 +135,6 @@
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="yes"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

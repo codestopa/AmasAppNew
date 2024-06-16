@@ -43,7 +43,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.textTitle.setText(receta.getNombre());
         holder.textDuration.setText(receta.getDuracion());
         holder.textDificultad.setText(receta.getDificultad());
-        //holder.imageView.setImageResource(receta.getImagen());
 
         Picasso.get().load(receta.getImagen()).into(holder.imageView);
 
@@ -54,7 +53,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             intent.putExtra("metodo", receta.getMetodo());
             intent.putExtra("nombre", receta.getNombre());
             intent.putExtra("imagen", receta.getImagen());
-            //intent.putExtra("ingredientes", new ArrayList<>(receta.getIngredientes()));
             intent.putExtra("ingredientes", receta.getIngredientes());
             intent.putExtra("valorNutricional", receta.getValorNutricional());
             context.startActivity(intent);
